@@ -22,7 +22,7 @@ public class connectDB {
             conexao.close();
         }
 
-        public void executeScript(String sql) throws SQLException {
+        public PreparedStatement executeScript(String sql) throws SQLException {
 
                 System.out.println("Executando Script SQL " + sql);
 
@@ -31,10 +31,11 @@ public class connectDB {
                 pstm.execute();
                 conexao.commit();
                 disconnect();
-
+                return pstm;
         }
 
-        public Connection getConnection() {
+        public Connection getConexao() throws SQLException {
+                connect();
                 return conexao;
         }
 }
