@@ -1,4 +1,4 @@
-package br.lawtrel.pdv.Controller;
+package br.lawtrel.pdv.Model;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -9,7 +9,7 @@ public class connectDB {
 
         private final String urlBanco = "jdbc:hsqldb:file:db/pdvdb";
         //private final String nomeBanco = "pdvdb";
-        private final String userBanco = "sa";
+        private final String userBanco = "SA";
         private final String senhaBanco = "";
 
         private Connection conexao;

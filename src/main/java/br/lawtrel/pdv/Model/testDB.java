@@ -1,4 +1,6 @@
-package br.lawtrel.pdv.Controller;
+package br.lawtrel.pdv.Model;
+
+import br.lawtrel.pdv.Model.connectDB;
 
 import java.sql.SQLException;
 

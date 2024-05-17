@@ -16,5 +16,10 @@ module br.lawtrel.pdv {
 
     opens br.lawtrel.pdv.Controller to javafx.fxml;
     exports br.lawtrel.pdv to javafx.graphics;
+    exports br.lawtrel.pdv.Controller to javafx.graphics;
+    exports br.lawtrel.pdv.Model to javafx.graphics;
+    opens br.lawtrel.pdv.Model to javafx.fxml;
+    exports br.lawtrel.pdv.View to javafx.graphics;
+    opens br.lawtrel.pdv.View to javafx.fxml;
 }
 
