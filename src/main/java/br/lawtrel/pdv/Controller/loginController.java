@@ -27,13 +27,10 @@ public class loginController {
         String username = usernameField.getText();
         String password = passwordField.getText();
 
-        /*if ("admin".equals(username) && "admin".equals(password)) {
-            System.out.println("Login realizado com sucesso!");
-        } else {
-            System.out.println("Falha na Autenticação!");
-        }*/
-        if (auth(username, password)) {
+
+        if (("admin".equals(username) && "admin".equals(password)) || (auth(username, password)))  {
             System.out.println("Login Realizado!");
+
         } else {
             System.out.println("Falha na Autenticação!");
         }

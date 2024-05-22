@@ -1,4 +1,4 @@
-package br.lawtrel.pdv;
+package br.lawtrel.pdv.Controller;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
