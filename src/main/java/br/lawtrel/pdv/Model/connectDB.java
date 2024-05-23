@@ -7,14 +7,13 @@ import java.sql.SQLException;
 
 public class connectDB {
 
-        private final String urlBanco = "jdbc:hsqldb:file:db/pdvdb";
-        //private final String nomeBanco = "pdvdb";
-        private final String userBanco = "SA";
-        private final String senhaBanco = "";
+        private static final String urlBanco = "jdbc:hsqldb:file:db/pdvdb";
+        private static final String userBanco = "SA";
+        private static final String senhaBanco = "";
 
-        private Connection conexao;
+        private static Connection conexao;
 
-        public void connect () throws SQLException {
+        public static void connect() throws SQLException {
            conexao = DriverManager.getConnection(urlBanco,userBanco,senhaBanco);
         }
 
@@ -34,7 +33,7 @@ public class connectDB {
                 return pstm;
         }
 
-        public Connection getConexao() throws SQLException {
+        public static Connection getConexao() throws SQLException {
                 connect();
                 return conexao;
         }

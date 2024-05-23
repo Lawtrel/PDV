@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 public class loginView extends Application {
@@ -16,6 +17,7 @@ public class loginView extends Application {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/br/lawtrel/pdv/loginScreen.fxml"));
         Parent root = loader.load();
         Scene scene = new Scene(root);
+        stage.getIcons().add(new Image(getClass().getResource("/br/lawtrel/pdv/assets/logo.png").toExternalForm()));
         stage.setWidth(355);
         stage.setHeight(190);
         stage.setScene(scene);
