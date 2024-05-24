@@ -21,7 +21,5 @@ public class Main extends Application {
         stage.show();
 
         Application.setUserAgentStylesheet(getClass().getResource("/br/lawtrel/pdv/assets/themes/dracula.css").toExternalForm());
-
-        //Application.setUserAgentStylesheet(new PrimerLight().getUserAgentStylesheet());
     }
 }
