@@ -20,7 +20,7 @@ public class loginController {
     @FXML
     private PasswordField passwordField;
 
-    private UserDao userDao = new UserDaoImp();
+    private final UserDao userDao = new UserDaoImp();
 
     @FXML
     private void btnLogin() {

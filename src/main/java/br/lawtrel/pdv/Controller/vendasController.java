@@ -1,5 +1,6 @@
 package br.lawtrel.pdv.Controller;
 
+import br.lawtrel.pdv.Model.Product;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
