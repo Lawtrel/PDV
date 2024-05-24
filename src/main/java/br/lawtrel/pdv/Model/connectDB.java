@@ -2,39 +2,29 @@ package br.lawtrel.pdv.Model;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 public class connectDB {
 
-        private static final String urlBanco = "jdbc:hsqldb:file:db/pdvdb";
-        private static final String userBanco = "SA";
-        private static final String senhaBanco = "";
+    private static final String urlBanco = "jdbc:hsqldb:file:db/pdvdb";
+    private static final String userBanco = "SA";
+    private static final String senhaBanco = "";
 
-        private static Connection conexao;
+    public static Connection getConnection() throws SQLException {
+        return DriverManager.getConnection(urlBanco, userBanco, senhaBanco);
 
-        public static void connect() throws SQLException {
-           conexao = DriverManager.getConnection(urlBanco,userBanco,senhaBanco);
+    }
+    public static void createTable() {
+        try (Connection db = getConnection(); Statement stm = db.createStatement()) {
+            String sql = "CREATE TABLE IF NOT EXIST USERS ("
+                    + "id INTEGER IDENTITY PRIMARY KEY. "
+                    + "username VARCHAR(50) NOT NULL, "
+                    + "password VARCHAR(50) NOT NULL"
+                    + ")";
+            stm.executeUpdate(sql);
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
-
-        public void disconnect() throws SQLException {
-            conexao.close();
-        }
-
-        public PreparedStatement executeScript(String sql) throws SQLException {
-
-                System.out.println("Executando Script SQL " + sql);
-
-                connect();
-                PreparedStatement pstm = conexao.prepareStatement(sql);
-                pstm.execute();
-                conexao.commit();
-                disconnect();
-                return pstm;
-        }
-
-        public static Connection getConexao() throws SQLException {
-                connect();
-                return conexao;
-        }
+    }
 }

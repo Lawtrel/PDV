@@ -21,5 +21,7 @@ module br.lawtrel.pdv {
     opens br.lawtrel.pdv.Model to javafx.fxml;
     exports br.lawtrel.pdv.View to javafx.graphics;
     opens br.lawtrel.pdv.View to javafx.fxml;
+    exports br.lawtrel.pdv.dao to javafx.graphics;
+    opens br.lawtrel.pdv.dao to javafx.fxml;
 }
 
