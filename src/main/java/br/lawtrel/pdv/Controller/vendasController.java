@@ -46,7 +46,6 @@ public class vendasController {
         // Adicione o código para cancelar a venda
     }
 
-    // Inicialize a tabela e outras configurações
     @FXML
     public void initialize() {
         // Configuração inicial da tabela
