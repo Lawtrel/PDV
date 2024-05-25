@@ -1,19 +1,25 @@
 package br.lawtrel.pdv.Controller;
 
 import br.lawtrel.pdv.Model.User;
-import br.lawtrel.pdv.Model.connectDB;
 import br.lawtrel.pdv.dao.UserDao;
 import br.lawtrel.pdv.dao.UserDaoImp;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.io.IOException;
 
 public class loginController {
+    private Stage stage;
+    private Scene scene;
+    private Parent root;
+
     @FXML
     private TextField usernameField;
 
@@ -23,15 +29,24 @@ public class loginController {
     private final UserDao userDao = new UserDaoImp();
 
     @FXML
-    private void btnLogin() {
+    private void btnLogin(ActionEvent event) throws IOException {
         String username = usernameField.getText();
         String password = passwordField.getText();
         User user = new User(username,password);
         userDao.getUser(username,password);
         if (user != null || ("admin".equals(username) && "admin".equals(password))) {
-            System.out.println("Login successful!");
+            System.out.println("Login feito com sucesso!");
+
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/br/lawtrel/pdv/vendasScreen.fxml"));
+            root = loader.load();
+            stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            scene = new Scene(root);
+            stage.setScene(scene);;
+            stage.setTitle("Tela de Vendas");
+            stage.show();
+
         } else {
-            System.out.println("Invalid credentials.");
+            System.out.println("Senha Invalida!");
         }
     }
 

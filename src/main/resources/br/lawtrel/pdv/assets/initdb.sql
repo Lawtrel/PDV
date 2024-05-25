@@ -1,4 +1,5 @@
 CREATE TABLE IF NOT EXISTS users (
-    username VARCHAR(255) PRIMARY KEY,
+    id int PRIMARY KEY,
+    username VARCHAR(255),
     password VARCHAR(255)
 );
