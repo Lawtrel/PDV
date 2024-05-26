@@ -7,3 +7,9 @@ Principais Funções que vai conter nele:
 - Tela login
 - Tela cadastro de produtos/tela de lista produtos
 - Forma de pagamento
+
+<h2> Requisitos</h2>
+
+<a href="https://hsqldb.org/">HSQLDB</a>
+
+<a href= "https://github.com/mkpaz/atlantafx">AtlantaFX</a>
