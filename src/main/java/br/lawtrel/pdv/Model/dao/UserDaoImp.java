@@ -1,4 +1,4 @@
-package br.lawtrel.pdv.dao;
+package br.lawtrel.pdv.Model.dao;
 
 import br.lawtrel.pdv.Model.User;
 import br.lawtrel.pdv.Model.connectDB;

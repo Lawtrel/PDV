@@ -1,8 +1,8 @@
 package br.lawtrel.pdv.Controller;
 
 import br.lawtrel.pdv.Model.User;
-import br.lawtrel.pdv.dao.UserDao;
-import br.lawtrel.pdv.dao.UserDaoImp;
+import br.lawtrel.pdv.Model.dao.UserDao;
+import br.lawtrel.pdv.Model.dao.UserDaoImp;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;

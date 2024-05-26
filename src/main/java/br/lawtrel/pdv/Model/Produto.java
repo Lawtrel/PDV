@@ -1,18 +1,27 @@
 package br.lawtrel.pdv.Model;
 
-public class Product {
+public class Produto {
+    private int codProduto;
     private String name;
     private int quantity;
     private double price;
 
-    public Product() {}
+    public Produto() {}
 
-    public Product(String name, int quantity, double price) {
+    public Produto(int codProduto,String name, int quantity, double price) {
+        this.codProduto = codProduto;
         this.name = name;
         this.quantity = quantity;
         this.price = price;
     }
 
+    public  int getCodProduto() {
+        return codProduto;
+    }
+
+    public  void  setCodProduto(int codProduto) {
+        this.codProduto = codProduto;
+    }
     public String getName() {
         return name;
     }
@@ -36,4 +45,5 @@ public class Product {
     public void setPrice(double price) {
         this.price = price;
     }
+
 }
