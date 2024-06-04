@@ -11,3 +11,10 @@ CREATE TABLE produtos (
     quantidade INTEGER,
     preco DOUBLE
 );
+
+CREATE TABLE VENDAS (
+    id INTEGER IDENTITY PRIMARY KEY,
+    data DATE,
+    valor DECIMAL(10, 2),
+    pago BOOLEAN
+);

@@ -7,12 +7,14 @@ import br.lawtrel.pdv.Model.dao.VendaDao;
 import br.lawtrel.pdv.Model.connectDB;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.List;
 
 public class vendasController {
@@ -57,25 +59,51 @@ public class vendasController {
     //private final Product productDao = new ProductDao();
     @FXML
     private void btnAddProduct() {
-        int codigo = Integer.parseInt(productCodeField.getText());
+        String codigo = productCodeField.getText();
         int quantidade = Integer.parseInt(quantityField.getText());
 
-        Produto produto = new Produto();
-        produto.setCodProduto(codigo);
-        produto.setName("coco");
-        produto.setQuantity(quantidade);
-        produto.setPrice(10.0 * quantidade);
+        Produto produto = produtoDao.buscar(codigo);
+        if (produto != null) {
+            produto.setQuantidade(quantidade);
+            produto.setPreco(produto.getPreco() * quantidade);
+            produtosList.add(produto);
+            produtoDao.insert(produto);
+            atualizarTotal();
 
-        produtosList.add(produto);
-        produtoDao.insert(produto);
+        } else {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("ERRO");
+            alert.setHeaderText("PRODUTO NÃO ENCONTRADO!");
+            alert.setContentText("O PRODUTO COM O CÓDIGO " + codigo + "NÃO FOI ENCONTRADO NO BANCO DE DADOS!");
+            alert.showAndWait();
+        }
 
-        atualizarTotal();
+       /* Produto produto = new Produto(); //   ANTIGO METODO
+        produto.setCodigo(codigo);
+        produto.setDescricao("coco");
+        produto.setQuantidade(quantidade);
+        produto.setPreco(2 * quantidade);
+        */
 
     }
+
+    public void btnAddProductTEST(ActionEvent actionEvent) {
+        String codigo = productCodeField.getText();
+        int quantidade = Integer.parseInt(quantityField.getText());
+        Produto produto = new Produto();
+        produto.setCodigo(codigo);
+        produto.setDescricao("Item Teste");
+        produto.setQuantidade(quantidade);
+        produto.setPreco(produto.getPreco() * quantidade);
+        produtosList.add(produto);
+        produtoDao.insert(produto);
+    }
+
 
     @FXML
     private void btnFinishSale() {
         Venda venda = new Venda();
+        venda.setData(LocalDate.now());
         venda.setValor(calcularTotal());
 
         vendaDao.insert(venda);
@@ -96,7 +124,7 @@ public class vendasController {
     }
 
     private double calcularTotal() {
-        return produtosList.stream().mapToDouble(Produto::getPrice).sum();
+        return produtosList.stream().mapToDouble(Produto::getPreco).sum();
 
     }
 

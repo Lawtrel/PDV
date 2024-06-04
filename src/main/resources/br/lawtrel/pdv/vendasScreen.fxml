@@ -10,13 +10,14 @@
                 <TextField fx:id="productCodeField" promptText="Código do Produto" />
                 <TextField fx:id="quantityField" promptText="Quantidade" />
                 <Button onAction="#btnAddProduct" text="Adicionar Produto" />
+            <Button layoutX="407.0" layoutY="10.0" onAction="#btnAddProductTEST" text="Teste" />
             </children>
         </HBox>
-        <TableView fx:id="productsTable" prefHeight="200" prefWidth="400">
+        <TableView fx:id="productsTable" prefHeight="200" prefWidth="618.0">
             <columns>
                 <TableColumn fx:id="codeColumn" text="Código" />
-                <TableColumn fx:id="descriptionColumn" text="Descrição" />
-                <TableColumn fx:id="quantityColumn" text="Quantidade" />
+                <TableColumn fx:id="descriptionColumn" prefWidth="95.0" text="Descrição" />
+                <TableColumn fx:id="quantityColumn" prefWidth="77.60000610351562" text="Quantidade" />
                 <TableColumn fx:id="priceTotalColumn" text="Preço Total" />
             </columns>
         </TableView>

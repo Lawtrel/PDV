@@ -24,10 +24,11 @@ public class VendaDao {
         this.connection = connection;
     }*/
     public void insert(Venda venda) {
+
         String sql = "INSERT INTO VENDAS(data,valor,pago) VALUES(?,?,?)";
         try {
             PreparedStatement pst = connection.prepareStatement(sql);
-            pst.setDate(1, Date.valueOf(venda.getData()));
+            pst.setDate(1, java.sql.Date.valueOf(venda.getData()));
             pst.setDouble(2,venda.getValor());
             pst.setBoolean(3,venda.getPago());
             //pst.setInt(4,venda.getCliente().getCodCliente());
