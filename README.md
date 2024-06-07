@@ -5,7 +5,9 @@ Sistema Caixa Simples
 
 Principais Funções que vai conter nele:
 - Tela login
+<img src="https://i.imgur.com/8qIizYa.png">
 - Tela cadastro de produtos/tela de lista produtos
+<img src="https://i.imgur.com/pc94lVS.png">
 - Forma de pagamento
 
 <h2> Requisitos</h2>
