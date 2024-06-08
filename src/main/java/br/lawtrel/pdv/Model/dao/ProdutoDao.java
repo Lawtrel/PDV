@@ -18,7 +18,7 @@ public class ProdutoDao {
     }
 
 
-    public boolean insert(Produto produto) {
+    public boolean insert (Produto produto) {
         String sql = "INSERT INTO produtos(codigo,descricao, quantidade, preco) VALUES (?,?,?,?)";
         try {
             PreparedStatement pst = connection.prepareStatement(sql);

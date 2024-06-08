@@ -3,29 +3,16 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.lawtrel.pdv.Controller.produtosController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.lawtrel.pdv.Controller.Menus.produtosController">
     <MenuBar layoutY="2.0" prefHeight="25.0" prefWidth="600.0">
-        <menus>
-            <Menu mnemonicParsing="false" text="Funcionario">
-                <items>
-                    <MenuItem mnemonicParsing="false" text="Close" />
-                </items>
-            </Menu>
-            <Menu mnemonicParsing="false" text="Vendas">
-                <items>
-                    <MenuItem mnemonicParsing="false" text="About" />
-                </items>
-            </Menu>
-            <Menu mnemonicParsing="false" text="Produtos">
-                <items>
-                    <MenuItem mnemonicParsing="false" text="Delete" />
-                </items>
-            </Menu>
-            <Menu mnemonicParsing="false" text="Unspecified Menu">
-                <items>
-                    <MenuItem mnemonicParsing="false" text="Action 1" />
-                </items>
-            </Menu>
-        </menus>
+        <Menu fx:id="menufuncionarios" mnemonicParsing="false" onAction="#swapfuncionarios" text="Funcionario">
+            <MenuItem mnemonicParsing="false" text="Close" />
+        </Menu>
+        <Menu fx:id="menuprodutos" mnemonicParsing="false" onAction="#swapprodutos" text="Produtos">
+            <MenuItem mnemonicParsing="false" text="Delete" />
+        </Menu>
+        <Menu fx:id="menuvendas" mnemonicParsing="false" onAction="#swapvendas" text="Vendas">
+            <MenuItem mnemonicParsing="false" text="About" />
+        </Menu>
     </MenuBar>
 </AnchorPane>

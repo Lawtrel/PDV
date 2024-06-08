@@ -3,14 +3,12 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox prefHeight="135.0" prefWidth="220.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.lawtrel.pdv.Controller.loginController">
-   <AnchorPane prefHeight="186.0" prefWidth="220.0">
-      <children>
-                  <PasswordField fx:id="passwordField" layoutX="8.0" layoutY="54.0" prefHeight="26.0" prefWidth="204.0" promptText="Senha" />
-                  <Button layoutX="14.0" layoutY="95.0" onAction="#btnLogin" text="Login" />
-                  <Button layoutX="142.0" layoutY="95.0" onAction="#btnRegister" text="Registrar" />
-                  <TextField fx:id="usernameField" layoutX="8.0" layoutY="14.0" prefHeight="26.0" prefWidth="204.0" promptText="Usuario" />
-      </children>
-   </AnchorPane>
+<VBox prefHeight="190.0" prefWidth="230.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.lawtrel.pdv.Controller.loginController">
+    <AnchorPane prefHeight="190.0" prefWidth="230.0">
+        <PasswordField fx:id="passwordField" layoutX="8.0" layoutY="80.0" prefHeight="26.0" prefWidth="218.0" promptText="Senha" />
+        <Button layoutX="14.0" layoutY="128.0" onAction="#btnLogin" text="Login" />
+        <Button layoutX="152.0" layoutY="128.0" onAction="#btnRegister" text="Registrar" />
+        <TextField fx:id="usernameField" layoutX="8.0" layoutY="31.0" prefHeight="26.0" prefWidth="217.0" promptText="Usuario" />
+    </AnchorPane>
 
 </VBox>

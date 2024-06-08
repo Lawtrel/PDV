@@ -23,7 +23,7 @@ public class produtosView extends Application{
         stage.setWidth(655);
         stage.setHeight(500);
         stage.setScene(scene);
-        stage.setTitle("Tela de Usuário");
+        stage.setTitle("Tela PRodutos");
         stage.show();
 
         Application.setUserAgentStylesheet(Objects.requireNonNull(getClass().getResource("/br/lawtrel/pdv/assets/themes/dracula.css")).toExternalForm());
