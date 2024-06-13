@@ -22,5 +22,8 @@ public class Menu extends Application {
         Parent parentprodutos = produtosCont.load();
         Parent parentvendas = vendasCont.load();
         Parent parentfuncionarios = funcionariosCont.load();
+
+
+        stage.show();
     }
 }

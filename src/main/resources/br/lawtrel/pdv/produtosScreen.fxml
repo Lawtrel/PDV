@@ -4,8 +4,9 @@
 <?import javafx.scene.layout.*?>
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.lawtrel.pdv.Controller.Menus.produtosController">
-    <MenuBar layoutY="2.0" prefHeight="25.0" prefWidth="600.0">
-        <Menu fx:id="menufuncionarios" mnemonicParsing="false" onAction="#swapfuncionarios" text="Funcionario">
+
+    <MenuBar fx:id="funcionarios" layoutY="5.0" prefHeight="25.0" prefWidth="600.0">
+        <Menu fx:id="menufuncionarios" mnemonicParsing="false" onAction="#swapfuncionarios" text="Funcionarios">
             <MenuItem mnemonicParsing="false" text="Close" />
         </Menu>
         <Menu fx:id="menuprodutos" mnemonicParsing="false" onAction="#swapprodutos" text="Produtos">
@@ -14,5 +15,25 @@
         <Menu fx:id="menuvendas" mnemonicParsing="false" onAction="#swapvendas" text="Vendas">
             <MenuItem mnemonicParsing="false" text="About" />
         </Menu>
+      <Menu mnemonicParsing="false" text=". . . . . .">
+        <items>
+          <MenuItem mnemonicParsing="false" text="Action 1" />
+        </items>
+      </Menu>
+      <Menu mnemonicParsing="false" text="Estoque de Produtos">
+        <items>
+          <MenuItem mnemonicParsing="false" text="Action 1" />
+        </items>
+      </Menu>
     </MenuBar>
+   <TableView layoutY="31.0" prefHeight="370.0" prefWidth="600.0">
+     <columns>
+       <TableColumn fx:id="idcolumn" prefWidth="113.40000760555267" text="ID" />
+         <TableColumn prefWidth="113.79999542236328" text="Descrição" />
+       <TableColumn prefWidth="197.19998168945312" text="Nome" />
+         <TableColumn prefWidth="171.40005493164062" text="Quantidade" />
+
+     </columns>
+   </TableView>
+
 </AnchorPane>
