@@ -61,7 +61,7 @@ public class vendasController {
         int quantidade = Integer.parseInt(quantityField.getText());
 
         Produto produto = new Produto();
-        produto.setCodProduto(codigo);
+        produto.setCodProduto(String.valueOf(codigo));
         produto.setName("coco");
         produto.setQuantity(quantidade);
         produto.setPrice(10.0 * quantidade);

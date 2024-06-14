@@ -22,7 +22,7 @@ public class ProdutoDao {
         String sql = "INSERT INTO produtos(codigo,descricao, quantidade, preco) VALUES (?,?,?,?)";
         try {
             PreparedStatement pst = connection.prepareStatement(sql);
-            pst.setInt(1,produto.getCodProduto());
+            pst.setString(1,produto.getCodProduto());
             pst.setString(2,produto.getName());
             pst.setInt(3,produto.getQuantity());
             pst.setDouble(4,produto.getPrice());
@@ -38,7 +38,7 @@ public class ProdutoDao {
         String sql = "UPDATE produtos SET codigo=?, descricao=?, quantidade=?, preco=?";
         try {
             PreparedStatement pst = connection.prepareStatement(sql);
-            pst.setInt(1,produto.getCodProduto());
+            pst.setString(1,produto.getCodProduto());
             pst.setString(2,produto.getName());
             pst.setInt(3,produto.getQuantity());
             pst.setDouble(4,produto.getPrice());
@@ -54,7 +54,7 @@ public class ProdutoDao {
         String sql = "DELETE FROM produtos WHERE codigo=?";
         try {
             PreparedStatement pst = connection.prepareStatement(sql);
-            pst.setInt(1,produto.getCodProduto());
+            pst.setString(1,produto.getCodProduto());
             pst.execute();
             return true;
         } catch (SQLException ex) {
@@ -64,16 +64,16 @@ public class ProdutoDao {
     }
 
 
-    public Produto buscar(int codigo) {
+    public Produto buscar(String codigo) {
         String sql = "SELECT * FROM produtos WHERE codigo = ?";
         Produto produto = null;
         try {
             PreparedStatement pst = connection.prepareStatement(sql);
-            pst.setInt(1,codigo);
+            pst.setString(1,codigo);
             ResultSet rst = pst.executeQuery();
             while (rst.next()) {
                 produto = new Produto();
-                produto.setCodProduto(rst.getInt("codigo"));
+                produto.setCodProduto(rst.getString("codigo"));
                 produto.setName(rst.getString("descricao"));
                 produto.setPrice(rst.getInt("preco"));
                 produto.setQuantity(rst.getInt("quantidade"));
@@ -82,5 +82,24 @@ public class ProdutoDao {
             Logger.getLogger(ProdutoDao.class.getName()).log(Level.SEVERE, null, ex);
         }
         return produto;
+    }
+    public List<Produto> listarTodos() {
+        String sql = "SELECT * FROM produtos";
+        List<Produto> produtos = new ArrayList<>();
+        try {
+            PreparedStatement pst = connection.prepareStatement(sql);
+            ResultSet rst = pst.executeQuery();
+            while (rst.next()) {
+                Produto produto = new Produto();
+                produto.setCodigo(rst.getString("codigo"));
+                produto.setDescricao(rst.getString("descricao"));
+                produto.setQuantidade(rst.getInt("quantidade"));
+                produto.setPreco(rst.getInt("preco"));
+                produtos.add(produto);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ProdutoDao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return produtos;
     }
 }
