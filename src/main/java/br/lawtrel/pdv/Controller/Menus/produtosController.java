@@ -52,14 +52,14 @@ public class produtosController {
 
     @FXML
     protected void swapprodutos(ActionEvent e){
-        new produtosView().setVisible(true);
+
     }
     @FXML
     protected void swapfuncionarios(ActionEvent e){
-        new userView().setVisible(true);
+
     }
     @FXML
     protected void swapvendas(ActionEvent e){
-        new vendasFeitasView().setVisible(true);
+
     }
 }
