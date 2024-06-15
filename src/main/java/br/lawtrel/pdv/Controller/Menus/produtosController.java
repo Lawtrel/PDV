@@ -3,6 +3,9 @@ package br.lawtrel.pdv.Controller.Menus;
 import br.lawtrel.pdv.Model.Produto;
 import br.lawtrel.pdv.Model.connectDB;
 import br.lawtrel.pdv.Model.dao.ProdutoDao;
+import br.lawtrel.pdv.View.produtosView;
+import br.lawtrel.pdv.View.userView;
+import br.lawtrel.pdv.View.vendasFeitasView;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -22,11 +25,11 @@ public class produtosController {
     private Menu menuvendas;
 
     @FXML
-    private TableColumn<Produto, Integer> idcolumn;
+    private TableColumn<Produto, Integer> codigocolumn;
     @FXML
     private TableColumn<Produto, String> descricaocolumn;
     @FXML
-    private TableColumn<Produto, String>  nomecolumn;
+    private TableColumn<Produto, String>  precocolumn;
     @FXML
     private TableColumn<Produto, Integer>  quantidadecolumn;
 
@@ -49,14 +52,14 @@ public class produtosController {
 
     @FXML
     protected void swapprodutos(ActionEvent e){
-
+        new produtosView().setVisible(true);
     }
     @FXML
     protected void swapfuncionarios(ActionEvent e){
-
+        new userView().setVisible(true);
     }
     @FXML
     protected void swapvendas(ActionEvent e){
-
+        new vendasFeitasView().setVisible(true);
     }
 }

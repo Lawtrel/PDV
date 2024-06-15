@@ -12,9 +12,9 @@ public class Menu extends Application {
     private static Stage primaryStage;
     @Override
     public void start(Stage stage) throws Exception {
-        FXMLLoader produtosCont = new FXMLLoader(getClass().getResource("produtosController.fxml"));
-        FXMLLoader vendasCont = new FXMLLoader(getClass().getResource("vendasFeitasController.fxml"));
-        FXMLLoader funcionariosCont = new FXMLLoader(getClass().getResource("funcionariosController.fxml"));
+        FXMLLoader produtosCont = new FXMLLoader(getClass().getResource("produtosScreen.fxml"));
+        FXMLLoader vendasCont = new FXMLLoader(getClass().getResource("vendasFeitas.fxml"));
+        FXMLLoader funcionariosCont = new FXMLLoader(getClass().getResource("userScreen.fxml"));
 
         primaryStage = stage;
         primaryStage.setTitle("Muda janela");
