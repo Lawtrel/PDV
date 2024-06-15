@@ -6,7 +6,7 @@ import br.lawtrel.pdv.Model.dao.ProdutoDao;
 import br.lawtrel.pdv.Model.dao.VendaDao;
 import br.lawtrel.pdv.Model.connectDB;
 
-import com.mercadopago.MercadoPago;
+import br.lawtrel.pdv.Model.MercadoPagoConfig;
 import com.mercadopago.exceptions.MPException;
 import com.mercadopago.resources.Payment;
 import com.mercadopago.resources.datastructures.payment.Payer;
@@ -19,9 +19,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream
-        ;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.time.LocalDate;
@@ -65,6 +62,7 @@ public class vendasController {
         vendaDao = new VendaDao(connection);
         produtoDao = new ProdutoDao(connection);
         produtosList = FXCollections.observableArrayList();
+        MercadoPagoConfig.initialize();
 
     }
 
@@ -126,25 +124,19 @@ public class vendasController {
             double valorPago = solicitarValorPago();
             emitirNota(venda,valorPago);
         } else  if ("Cartão de Crédito".equals(formaDePagamento) || "Cartão de Débito".equals(formaDePagamento)) {
-            try {
-                processarPagamentoCartao(venda);
-            } catch (MPException e) {
-                e.printStackTrace();
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setTitle("Falha de Pagamento");
-                alert.setHeaderText("Falha ao processar o pagamento");
-                alert.setContentText("Ocorreu um erro ao processar o pagamento com cartao.");
-                alert.showAndWait();
-                return;
-            }
-        //} else if ("PIX".equals(formaDePagamento))
+            String detalhesCartao = solicitarDetalhesCartao();
+                processarPagamentoCartao(venda, detalhesCartao);
+        } else if ("PIX".equals(formaDePagamento)) {
+            String pixCode = gerarPixCode(venda.getValor());
+            gerarQRCode(pixCode);
+            emitirNota(venda,venda.getValor());
+        } else {
             emitirNota(venda,venda.getValor());
         }
         vendaDao.insert(venda);
         produtosList.clear();
         atualizarTotal();
     }
-
     public String selecionarFormaDePagamento(Venda venda) {
         List<String> choices = new ArrayList<>();
         choices.add("Dinheiro");
@@ -169,6 +161,59 @@ public class vendasController {
         return result.map(Double::parseDouble).orElse(0.0);
     }
 
+    private String solicitarDetalhesCartao() {
+        TextInputDialog dialog = new TextInputDialog();
+        dialog.setTitle("Detalhes do Cartão");
+        dialog.setHeaderText("Pagamento com Cartão");
+        dialog.setContentText("Insira os detalhes do cartão:");
+
+        Optional<String> result = dialog.showAndWait();
+        return result.orElse("");
+
+    }
+
+    private void processarPagamentoCartao(Venda venda, String detalhesCartao) {
+        try {
+            // Adicionando mensagem de depuração para verificar os detalhes do cartão
+            System.out.println("Detalhes do Cartão: " + detalhesCartao);
+
+            Payment payment = new Payment()
+                    .setTransactionAmount((float) venda.getValor())
+                    .setToken(detalhesCartao)
+                    .setDescription("Compra de produtos")
+                    .setInstallments(1)
+                    .setPaymentMethodId("visa") // Certifique-se de que este método de pagamento é válido
+                    .setPayer(new Payer().setEmail("capcomx10@gmail.com"));
+
+            // Adicionando mensagem de depuração antes de salvar o pagamento
+            System.out.println("Processando pagamento...");
+
+            payment.save();
+
+            // Adicionando mensagem de depuração para verificar o status do pagamento
+            System.out.println("Status do pagamento: " + payment.getStatus());
+
+            if (payment.getStatus() == Payment.Status.approved) {
+                venda.setPago(true);
+                emitirNota(venda, venda.getValor(), detalhesCartao);
+            } else {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Pagamento não aprovado");
+                alert.setHeaderText("O pagamento com o cartão não foi aprovado.");
+                alert.setContentText("Por favor, tente novamente.");
+                alert.showAndWait();
+            }
+        } catch (MPException e) {
+            e.printStackTrace();
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Erro de Pagamento");
+            alert.setHeaderText("Ocorreu um erro ao processar o pagamento com o cartão.");
+            alert.setContentText(e.getMessage());
+            alert.showAndWait();
+        }
+    }
+
+
     private void emitirNota(Venda venda, double valorPago) {
         double troco = valorPago - venda.getValor();
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -177,6 +222,24 @@ public class vendasController {
         alert.setContentText(String.format("Total: R$ %.2f\nValor Pago: R$ %.2f\nTroco: R$ %.2f\nForma de Pagamento: %s", venda.getValor(), valorPago, troco, venda.getFormaDePagamento()));
         alert.showAndWait();
     }
+
+    private void emitirNota(Venda venda, double valorPago, String detalhesCartao) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Nota Fiscal");
+        alert.setHeaderText("Detalhes da Venda");
+        alert.setContentText(String.format("Total: R$ %.2f\nValor Pago: R$ %.2f\nDetalhes do Cartão: %s\nForma de Pagamento: %s",
+                venda.getValor(), valorPago, detalhesCartao, venda.getFormaDePagamento()));
+        alert.showAndWait();
+    }
+
+    private String gerarPixCode(double valor) {
+        return "00020126360014BR.GOV.BCB.PIX0114+5561123456780205PIX5204000053039865802BR5925NOME DO RECEBEDOR6009SAO PAULO61080540900062150506" + valor;
+    }
+
+
+    private void gerarQRCode(String pixCode) {
+    }
+
 
     // Handler para cancelar venda
     @FXML
