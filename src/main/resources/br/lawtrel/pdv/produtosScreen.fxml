@@ -28,10 +28,10 @@
     </MenuBar>
    <TableView layoutY="31.0" prefHeight="370.0" prefWidth="600.0">
      <columns>
-       <TableColumn fx:id="codigo" prefWidth="113.40000760555267" text="codigocolumn" />
-         <TableColumn fx:id="descricao" prefWidth="113.79999542236328" text="descricaocolumn" />
-       <TableColumn fx:id="preco" prefWidth="197.19998168945312" text="precocolumn" />
-         <TableColumn fx:id="quantidade" prefWidth="171.40005493164062" text="quantidadecolumn" />
+       <TableColumn fx:id="codigocolumn" prefWidth="113.40000760555267" text="Código" />
+         <TableColumn fx:id="descricaocolumn" prefWidth="113.79999542236328" text="Descrição" />
+       <TableColumn fx:id="precocolumn" prefWidth="197.19998168945312" text="Preço" />
+         <TableColumn fx:id="quantidadecolumn" prefWidth="171.40005493164062" text="Quantidade" />
 
      </columns>
    </TableView>
