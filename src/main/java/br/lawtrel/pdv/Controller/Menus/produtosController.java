@@ -12,17 +12,21 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Menu;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.sql.Connection;
 import java.sql.SQLException;
 
-public class produtosController {
+public class produtosController extends br.lawtrel.pdv.Controller.Menus.Menu {
     @FXML
     private Menu menufuncionarios;
     @FXML
     private Menu menuprodutos;
     @FXML
     private Menu menuvendas;
+    @FXML
+    private TableView<Produto> productsTable;
 
     @FXML
     private TableColumn<Produto, Integer> codigocolumn;
@@ -43,23 +47,14 @@ public class produtosController {
         produtosList = FXCollections.observableArrayList();
 
     }
-
-    public produtosController(ObservableList<Produto> produtosList, Connection connection, ProdutoDao produtoDao) {
-        this.produtosList = produtosList;
-        this.connection = connection;
-        this.produtoDao = produtoDao;
-    }
-
-    @FXML
-    protected void swapprodutos(ActionEvent e){
+    public void initialize() {
+        codigocolumn.setCellValueFactory(new PropertyValueFactory<>("codigo"));
+        descricaocolumn.setCellValueFactory(new PropertyValueFactory<>("descricao"));
+        quantidadecolumn.setCellValueFactory(new PropertyValueFactory<>("quantidade"));
+        precocolumn.setCellValueFactory(new PropertyValueFactory<>("preco"));
+        productsTable.setItems(produtosList);
 
     }
-    @FXML
-    protected void swapfuncionarios(ActionEvent e){
 
-    }
-    @FXML
-    protected void swapvendas(ActionEvent e){
 
-    }
 }

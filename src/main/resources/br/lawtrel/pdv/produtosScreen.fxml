@@ -26,7 +26,7 @@
         </items>
       </Menu>
     </MenuBar>
-   <TableView layoutY="31.0" prefHeight="370.0" prefWidth="600.0">
+   <TableView fx:id="productsTable" layoutY="31.0" prefHeight="370.0" prefWidth="600.0">
      <columns>
        <TableColumn fx:id="codigocolumn" prefWidth="113.40000760555267" text="Código" />
          <TableColumn fx:id="descricaocolumn" prefWidth="113.79999542236328" text="Descrição" />

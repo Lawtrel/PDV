@@ -1,6 +1,8 @@
 package br.lawtrel.pdv.Controller.Menus;
 
 import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -25,5 +27,17 @@ public class Menu extends Application {
 
 
         stage.show();
+    }
+    @FXML
+    protected void swapprodutos(ActionEvent e){
+
+    }
+    @FXML
+    protected void swapfuncionarios(ActionEvent e){
+
+    }
+    @FXML
+    protected void swapvendas(ActionEvent e){
+
     }
 }
