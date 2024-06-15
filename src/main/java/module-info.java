@@ -32,6 +32,8 @@
         requires javafx.controls;
         requires javafx.fxml;
         requires javafx.graphics;
+        requires junit;
+        requires dx.java;
 
         opens br.lawtrel.pdv.Model to javafx.base;
         opens br.lawtrel.pdv to javafx.fxml;

@@ -10,16 +10,18 @@ public class Venda implements Serializable {
     private double valor;
     private boolean pago;
     private List<Produto> itensdeVenda;
+    private String formaDePagamento;
 
     //private Cliente cliente;
     public  Venda() {
 
     }
-    public  Venda(int codVenda, LocalDate data, double valor, boolean pago) {
+    public  Venda(int codVenda, LocalDate data, double valor, boolean pago,String formaDePagamento) {
         this.codVenda = codVenda;
         this.data = data;
         this.valor = valor;
         this.pago = pago;
+        this.formaDePagamento = formaDePagamento;
     }
 
     public int getCodVenda() {
@@ -46,8 +48,10 @@ public class Venda implements Serializable {
     }
 
     public boolean getPago() {
-        return pago;
+        return  pago;
     }
+
+    public void setPago(boolean pago) {this.pago = pago;}
 
     public List<Produto> getItensdeVenda() {
         return itensdeVenda;
@@ -55,6 +59,13 @@ public class Venda implements Serializable {
 
     public void setItensdeVenda(List<Produto> itensdeVenda) {
         this.itensdeVenda = itensdeVenda;
+    }
+
+    public String getFormaDePagamento() {
+        return formaDePagamento;
+    }
+    public void setFormaDePagamento(String formaDePagamento) {
+        this.formaDePagamento = formaDePagamento;
     }
 
 }

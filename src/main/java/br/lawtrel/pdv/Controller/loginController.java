@@ -14,7 +14,6 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-
 public class loginController {
     private Stage stage;
     private Scene scene;
