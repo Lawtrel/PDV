@@ -74,6 +74,7 @@ public class vendasController {
         String codigo = productCodeField.getText();
         int quantidade = Integer.parseInt(quantityField.getText());
 
+
         Produto produto = produtoDao.buscar(codigo);
         if (produto != null) {
             produto.setQuantidade(quantidade);

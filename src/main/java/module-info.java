@@ -23,6 +23,7 @@
     opens br.lawtrel.pdv.View to javafx.fxml;
     exports br.lawtrel.pdv.Model.dao to javafx.graphics;
     opens br.lawtrel.pdv.Model.dao to javafx.fxml;
+
 }*/
 
     module  br.lawtrel.pdv {
@@ -46,4 +47,5 @@
         opens  br.lawtrel.pdv.View to javafx.graphics;
         exports  br.lawtrel.pdv.View;
     }
+
 

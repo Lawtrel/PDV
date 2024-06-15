@@ -6,6 +6,7 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
 public class Produto {
+
     private StringProperty codigo;
     private StringProperty descricao;
     private int quantidade;
@@ -40,6 +41,7 @@ public class Produto {
 
     public  void  setCodigo(String codigo) {
         this.codigo.set(codigo);
+
     }
 
     public String getDescricao() {
@@ -66,7 +68,9 @@ public class Produto {
         return preco;
     }
 
+
     public void setPreco(int preco) {
         this.preco = preco;
+
     }
 }
