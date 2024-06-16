@@ -3,35 +3,28 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.lawtrel.pdv.VendasFeitas">
-   <children>
-      <MenuBar layoutY="2.0" prefHeight="25.0" prefWidth="600.0">
-        <menus>
-          <Menu mnemonicParsing="false" text="File">
-            <items>
-              <MenuItem mnemonicParsing="false" text="Close" />
-            </items>
-          </Menu>
-          <Menu mnemonicParsing="false" text="Edit">
-            <items>
-              <MenuItem mnemonicParsing="false" text="Delete" />
-            </items>
-          </Menu>
-          <Menu mnemonicParsing="false" text="Help">
-            <items>
-              <MenuItem mnemonicParsing="false" text="About" />
-            </items>
-          </Menu>
-        </menus>
-      </MenuBar>
-      <TableView layoutY="28.0" prefHeight="369.0" prefWidth="600.0">
-        <columns>
-          <TableColumn fx:id="idcolumn" prefWidth="75.0" text="ID" />
-          <TableColumn fx:id="nomecolumn" prefWidth="277.1999740600586" text="Nome" />
-            <TableColumn fx:id="quantidadecolumn" prefWidth="146.79998779296875" text="Quantidade de Produtos" />
-            <TableColumn fx:id="valorcolumn" prefWidth="99.00003051757812" text="Valor" />
-        </columns>
-      </TableView>
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.lawtrel.pdv.Controller.Menus.vendasFeitasController">
+    <MenuBar layoutY="1.0" prefHeight="25.0" prefWidth="600.0">
+        <Menu mnemonicParsing="false" text="Menu">
+            <MenuItem fx:id="menufuncionarios" mnemonicParsing="false" onAction="#swapfuncionarios" text="Funcionários" />
+            <MenuItem fx:id="menuprodutos" mnemonicParsing="false" onAction="#swapprodutos" text="Produtos" />
+            <MenuItem fx:id="menuvendas" mnemonicParsing="false" onAction="#swapvendas" text="Vendas" />
+        </Menu>
 
-   </children>
+        <Menu mnemonicParsing="false" text=". . . . . .">
+            <MenuItem mnemonicParsing="false" text="." />
+        </Menu>
+        <Menu mnemonicParsing="false" text="Histórico de Vendas">
+            <MenuItem mnemonicParsing="false" text="." />
+        </Menu>
+    </MenuBar>
+    <TableView layoutY="30.0" prefHeight="368.0" prefWidth="600.0">
+      <columns>
+          <TableColumn fx:id="codigocolumn" prefWidth="86.19997864961624" text="Código" />
+          <TableColumn fx:id="nomecolumn" prefWidth="266.6000518798828" text="Nome" />
+          <TableColumn fx:id="quantidadecolumn" prefWidth="146.79998779296875" text="Quantidade de Produtos" />
+          <TableColumn fx:id="valorcolumn" prefWidth="99.00003051757812" text="Valor" />
+      </columns>
+    </TableView>
+
 </AnchorPane>

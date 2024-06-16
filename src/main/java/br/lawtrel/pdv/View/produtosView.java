@@ -9,7 +9,7 @@ import javafx.stage.Stage;
 
 import java.util.Objects;
 
-public class produtosView extends Application{
+public class produtosView extends Application {
     public static void main(String[] args) {
         launch(args);
     }

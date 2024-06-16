@@ -1,17 +1,19 @@
 package br.lawtrel.pdv.Controller.Menus;
 
 import javafx.application.Application;
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
+
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+
 import javafx.stage.Stage;
+
 
 public class Menu extends Application {
 
     private static Scene sceneprodutos,scenevendas,scenefuncionarios;
     private static Stage primaryStage;
+
     @Override
     public void start(Stage stage) throws Exception {
         FXMLLoader produtosCont = new FXMLLoader(getClass().getResource("produtosScreen.fxml"));
@@ -19,25 +21,34 @@ public class Menu extends Application {
         FXMLLoader funcionariosCont = new FXMLLoader(getClass().getResource("userScreen.fxml"));
 
         primaryStage = stage;
-        primaryStage.setTitle("Muda janela");
+        primaryStage.setTitle("Troca de telas");
 
-        Parent parentprodutos = produtosCont.load();
-        Parent parentvendas = vendasCont.load();
-        Parent parentfuncionarios = funcionariosCont.load();
+        Parent parentProdutosS = produtosCont.load();
+        Parent parentUserS = funcionariosCont.load();
+        Parent parentVendasFeitas = vendasCont.load();
 
+        sceneprodutos = new Scene(parentProdutosS, 400, 300);
+        scenefuncionarios = new Scene(parentUserS, 400, 300);
+        scenevendas = new Scene(parentVendasFeitas, 400, 300);
 
+        stage.setScene(sceneprodutos);
         stage.show();
     }
-    @FXML
-    protected void swapprodutos(ActionEvent e){
 
-    }
-    @FXML
-    protected void swapfuncionarios(ActionEvent e){
+    public static void trocaTela(int op){
+        switch (op){
+            case 1:
+                primaryStage.setScene(sceneprodutos);
+                break;
 
-    }
-    @FXML
-    protected void swapvendas(ActionEvent e){
+            case 2:
+                primaryStage.setScene(scenefuncionarios);
+                break;
 
+            case 3:
+                primaryStage.setScene(scenevendas);
+                break;
+        }
     }
+
 }

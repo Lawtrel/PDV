@@ -3,28 +3,20 @@ package br.lawtrel.pdv.Controller.Menus;
 import br.lawtrel.pdv.Model.Produto;
 import br.lawtrel.pdv.Model.connectDB;
 import br.lawtrel.pdv.Model.dao.ProdutoDao;
-import br.lawtrel.pdv.View.produtosView;
-import br.lawtrel.pdv.View.userView;
-import br.lawtrel.pdv.View.vendasFeitasView;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Menu;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.sql.Connection;
 import java.sql.SQLException;
 
-public class produtosController extends br.lawtrel.pdv.Controller.Menus.Menu {
-    @FXML
-    private Menu menufuncionarios;
-    @FXML
-    private Menu menuprodutos;
-    @FXML
-    private Menu menuvendas;
+public class produtosController extends Janelas {
+
+    public MenuItem menufuncionarios;
+    public MenuItem menuprodutos;
+    public MenuItem menuvendas;
     @FXML
     private TableView<Produto> productsTable;
 
@@ -39,11 +31,9 @@ public class produtosController extends br.lawtrel.pdv.Controller.Menus.Menu {
 
     private final ObservableList<Produto> produtosList;
 
-    private final Connection connection;
-    private final ProdutoDao produtoDao;
     public produtosController() throws SQLException {
-        connection = connectDB.getConnection();
-        produtoDao = new ProdutoDao(connection);
+        Connection connection = connectDB.getConnection();
+        ProdutoDao produtoDao = new ProdutoDao(connection);
         produtosList = FXCollections.observableArrayList();
 
     }
@@ -55,6 +45,8 @@ public class produtosController extends br.lawtrel.pdv.Controller.Menus.Menu {
         productsTable.setItems(produtosList);
 
     }
+
+
 
 
 }

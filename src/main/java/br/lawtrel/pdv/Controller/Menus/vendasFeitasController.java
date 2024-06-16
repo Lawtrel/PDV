@@ -1,15 +1,23 @@
 package br.lawtrel.pdv.Controller.Menus;
 
+import br.lawtrel.pdv.Model.Produto;
+import br.lawtrel.pdv.Model.Venda;
+import javafx.application.Application;
 import javafx.fxml.FXML;
 import javafx.scene.control.MenuItem;
+import javafx.scene.control.TableColumn;
 
-public class vendasFeitasController extends Menu {
-    @FXML
-    private MenuItem Funcionario;
-    @FXML
-    private MenuItem Produtos;
-    @FXML
-    private MenuItem Vendas;
+public class vendasFeitasController extends Janelas {
 
 
+    public MenuItem menufuncionarios;
+    public MenuItem menuprodutos;
+    public MenuItem menuvendas;
+    @FXML
+    public TableColumn<Venda, String> nomecolumn;
+    @FXML
+    public TableColumn<Venda, Integer> quantidadecolumn;
+    @FXML
+    public TableColumn<Venda, Double> valorcolumn;
+    public TableColumn<Venda, String> codigocolumn;
 }
