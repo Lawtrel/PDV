@@ -44,6 +44,9 @@
         opens br.lawtrel.pdv.Controller to javafx.fxml;
         exports  br.lawtrel.pdv.Controller;
 
+        opens br.lawtrel.pdv.Controller.Menus to javafx.fxml;
+        exports br.lawtrel.pdv.Controller.Menus;
+
         opens  br.lawtrel.pdv.View to javafx.graphics;
         exports  br.lawtrel.pdv.View;
     }

@@ -175,7 +175,6 @@ public class vendasController {
 
     private void processarPagamentoCartao(Venda venda, String detalhesCartao) {
         try {
-            // Adicionando mensagem de depuração para verificar os detalhes do cartão
             System.out.println("Detalhes do Cartão: " + detalhesCartao);
 
             Payment payment = new Payment()
@@ -183,15 +182,13 @@ public class vendasController {
                     .setToken(detalhesCartao)
                     .setDescription("Compra de produtos")
                     .setInstallments(1)
-                    .setPaymentMethodId("visa") // Certifique-se de que este método de pagamento é válido
+                    .setPaymentMethodId("visa")
                     .setPayer(new Payer().setEmail("capcomx10@gmail.com"));
 
-            // Adicionando mensagem de depuração antes de salvar o pagamento
             System.out.println("Processando pagamento...");
 
             payment.save();
 
-            // Adicionando mensagem de depuração para verificar o status do pagamento
             System.out.println("Status do pagamento: " + payment.getStatus());
 
             if (payment.getStatus() == Payment.Status.approved) {
