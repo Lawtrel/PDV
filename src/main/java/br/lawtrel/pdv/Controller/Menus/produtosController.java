@@ -14,8 +14,11 @@ import java.sql.SQLException;
 
 public class produtosController extends Janelas {
 
+    @FXML
     public MenuItem menufuncionarios;
+    @FXML
     public MenuItem menuprodutos;
+    @FXML
     public MenuItem menuvendas;
     @FXML
     private TableView<Produto> productsTable;
@@ -45,6 +48,7 @@ public class produtosController extends Janelas {
         productsTable.setItems(produtosList);
 
     }
+
 
 
 

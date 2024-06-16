@@ -22,4 +22,6 @@ public class userController extends Janelas {
     public TableColumn<Produto, String> nomecolumn;
     @FXML
     public TableColumn<Venda,Double> totaldevendascolumn;
+
+    
 }

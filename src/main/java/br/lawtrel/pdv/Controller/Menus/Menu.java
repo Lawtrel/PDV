@@ -11,11 +11,13 @@ import javafx.stage.Stage;
 
 public class Menu extends Application {
 
-    private static Scene sceneprodutos,scenevendas,scenefuncionarios;
-    private static Stage primaryStage;
+    public static Scene sceneprodutos,scenevendas,scenefuncionarios;
+    public static Stage primaryStage;
 
     @Override
     public void start(Stage stage) throws Exception {
+
+        
         FXMLLoader produtosCont = new FXMLLoader(getClass().getResource("produtosScreen.fxml"));
         FXMLLoader vendasCont = new FXMLLoader(getClass().getResource("vendasFeitas.fxml"));
         FXMLLoader funcionariosCont = new FXMLLoader(getClass().getResource("userScreen.fxml"));
@@ -27,9 +29,9 @@ public class Menu extends Application {
         Parent parentUserS = funcionariosCont.load();
         Parent parentVendasFeitas = vendasCont.load();
 
-        sceneprodutos = new Scene(parentProdutosS, 400, 300);
-        scenefuncionarios = new Scene(parentUserS, 400, 300);
-        scenevendas = new Scene(parentVendasFeitas, 400, 300);
+        sceneprodutos = new Scene(parentProdutosS, 600, 450);
+        scenefuncionarios = new Scene(parentUserS, 600, 450);
+        scenevendas = new Scene(parentVendasFeitas, 600, 450);
 
         stage.setScene(sceneprodutos);
         stage.show();

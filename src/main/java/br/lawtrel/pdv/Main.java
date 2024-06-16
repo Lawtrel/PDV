@@ -7,6 +7,7 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.Objects;
 
 public class Main extends Application {
@@ -24,5 +25,6 @@ public class Main extends Application {
         stage.setTitle("Tela de Login");
         stage.show();
         Application.setUserAgentStylesheet(Objects.requireNonNull(getClass().getResource("/br/lawtrel/pdv/assets/themes/dracula.css")).toExternalForm());
+
     }
 }

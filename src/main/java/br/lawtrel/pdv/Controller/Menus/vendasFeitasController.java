@@ -7,7 +7,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TableColumn;
 
-public class vendasFeitasController extends Janelas {
+public class vendasFeitasController extends Janelas{
 
     @FXML
     public MenuItem menufuncionarios;
