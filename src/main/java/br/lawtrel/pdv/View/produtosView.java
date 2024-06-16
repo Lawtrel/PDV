@@ -1,5 +1,7 @@
 package br.lawtrel.pdv.View;
 
+import br.lawtrel.pdv.Model.Produto;
+import br.lawtrel.pdv.Model.dao.ProdutoDao;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -7,6 +9,7 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
+import java.util.List;
 import java.util.Objects;
 
 public class produtosView extends Application {
@@ -28,4 +31,5 @@ public class produtosView extends Application {
 
         Application.setUserAgentStylesheet(Objects.requireNonNull(getClass().getResource("/br/lawtrel/pdv/assets/themes/dracula.css")).toExternalForm());
     }
+
 }

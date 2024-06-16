@@ -3,13 +3,17 @@ package br.lawtrel.pdv.Controller.Menus;
 import javafx.application.Application;
 
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 
 import javafx.stage.Stage;
 
+import java.net.URL;
+import java.util.ResourceBundle;
 
-public class Menu extends Application {
+
+public class Menu extends Application implements Initializable {
 
     public static Scene sceneprodutos,scenevendas,scenefuncionarios;
     public static Stage primaryStage;
@@ -17,7 +21,7 @@ public class Menu extends Application {
     @Override
     public void start(Stage stage) throws Exception {
 
-        
+
         FXMLLoader produtosCont = new FXMLLoader(getClass().getResource("produtosScreen.fxml"));
         FXMLLoader vendasCont = new FXMLLoader(getClass().getResource("vendasFeitas.fxml"));
         FXMLLoader funcionariosCont = new FXMLLoader(getClass().getResource("userScreen.fxml"));
@@ -52,5 +56,8 @@ public class Menu extends Application {
                 break;
         }
     }
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
 
+    }
 }
