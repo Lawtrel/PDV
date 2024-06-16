@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.lawtrel.pdv.Controller.Menus.userController">
+  <MenuBar layoutY="1.0" prefHeight="25.0" prefWidth="600.0">
+    <Menu mnemonicParsing="false" text="Menu">
+      <MenuItem fx:id="menufuncionarios" mnemonicParsing="false" onAction="#swapfuncionarios" text="Funcionários" />
+      <MenuItem fx:id="menuprodutos" mnemonicParsing="false" onAction="#swapprodutos" text="Produtos" />
+      <MenuItem fx:id="menuvendas" mnemonicParsing="false" onAction="#swapvendas" text="Vendas" />
+    </Menu>
+
+    <Menu mnemonicParsing="false" text=". . . . . .">
+      <MenuItem mnemonicParsing="false" text="." />
+    </Menu>
+    <Menu mnemonicParsing="false" text="Quadro de Funcionários">
+      <MenuItem mnemonicParsing="false" text="." />
+    </Menu>
+  </MenuBar>
+  <TableView layoutY="31.0" prefHeight="342.0" prefWidth="600.0">
+    <columns>
+      <TableColumn fx:id="codigocolumn" prefWidth="85.59997403621674" text="Código" />
+      <TableColumn fx:id="tipocolumn" prefWidth="84.79999542236328" text="Tipo" />
+      <TableColumn fx:id="nomecolumn" prefWidth="260.0" text="Nome" />
+      <TableColumn fx:id="totaldevendascolumn" minWidth="0.0" prefWidth="170.0" text="Total de Vendas" />
+    </columns>
+  </TableView>
+</AnchorPane>

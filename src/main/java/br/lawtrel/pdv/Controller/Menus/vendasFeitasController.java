@@ -9,9 +9,11 @@ import javafx.scene.control.TableColumn;
 
 public class vendasFeitasController extends Janelas {
 
-
+    @FXML
     public MenuItem menufuncionarios;
+    @FXML
     public MenuItem menuprodutos;
+    @FXML
     public MenuItem menuvendas;
     @FXML
     public TableColumn<Venda, String> nomecolumn;
