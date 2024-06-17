@@ -32,6 +32,7 @@ public class produtosController extends Janelas {
     @FXML
     private TableColumn<Produto, Integer>  quantidadecolumn;
 
+    @FXML
     private final ObservableList<Produto> produtosList;
 
     public produtosController() throws SQLException {

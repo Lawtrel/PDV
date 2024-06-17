@@ -20,10 +20,9 @@
   </MenuBar>
   <TableView layoutY="31.0" prefHeight="342.0" prefWidth="600.0">
     <columns>
-      <TableColumn fx:id="codigocolumn" prefWidth="85.59997403621674" text="Código" />
-      <TableColumn fx:id="tipocolumn" prefWidth="84.79999542236328" text="Tipo" />
-      <TableColumn fx:id="nomecolumn" prefWidth="260.0" text="Nome" />
-      <TableColumn fx:id="totaldevendascolumn" minWidth="0.0" prefWidth="170.0" text="Total de Vendas" />
+      <TableColumn fx:id="codigocolumn" prefWidth="98.60000306367874" text="Código" />
+      <TableColumn fx:id="tipocolumn" prefWidth="103.0" text="Tipo" />
+      <TableColumn fx:id="nomecolumn" prefWidth="396.2000274658203" text="Nome" />
     </columns>
   </TableView>
 </AnchorPane>

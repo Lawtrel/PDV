@@ -15,7 +15,9 @@ import java.util.ResourceBundle;
 
 public class Menu extends Application implements Initializable {
 
-    public static Scene sceneprodutos,scenevendas,scenefuncionarios;
+    public static Scene sceneprodutos;
+    public static Scene scenevendas;
+    public static Scene scenefuncionarios;
     public static Stage primaryStage;
 
     @Override
@@ -26,7 +28,8 @@ public class Menu extends Application implements Initializable {
         FXMLLoader vendasCont = new FXMLLoader(getClass().getResource("vendasFeitas.fxml"));
         FXMLLoader funcionariosCont = new FXMLLoader(getClass().getResource("userScreen.fxml"));
 
-        primaryStage = stage;
+
+
         primaryStage.setTitle("Troca de telas");
 
         Parent parentProdutosS = produtosCont.load();

@@ -1,7 +1,9 @@
 package br.lawtrel.pdv.Controller.Menus;
 
+import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 
 
 public class Janelas {

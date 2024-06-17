@@ -18,7 +18,7 @@
             <MenuItem mnemonicParsing="false" text="." />
         </Menu>
     </MenuBar>
-    <TableView layoutY="30.0" prefHeight="368.0" prefWidth="600.0">
+    <TableView fx:id="vendasTable" layoutY="30.0" prefHeight="368.0" prefWidth="600.0">
       <columns>
           <TableColumn fx:id="codigocolumn" prefWidth="86.19997864961624" text="Código" />
           <TableColumn fx:id="nomecolumn" prefWidth="266.6000518798828" text="Nome" />
