@@ -76,6 +76,13 @@ public class loginController {
             new Menu().start(stage);
 
         } else {
+
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("ERRO");
+            alert.setHeaderText("ADMIN NÃO ENCONTRADO!");
+            alert.setContentText("O ADMIN " + username + "NÃO FOI ENCONTRADO NO BANCO DE DADOS!");
+            alert.showAndWait();
+
             System.out.println("Senha Invalida!");
         }
     }
