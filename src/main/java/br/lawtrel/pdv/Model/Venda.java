@@ -13,10 +13,11 @@ public class Venda implements Serializable {
     private String formaDePagamento;
 
     //private Cliente cliente;
-    public  Venda() {
+    public Venda() {
 
     }
-    public  Venda(int codVenda, LocalDate data, double valor, boolean pago,String formaDePagamento) {
+
+    public Venda(int codVenda, LocalDate data, double valor, boolean pago, String formaDePagamento) {
         this.codVenda = codVenda;
         this.data = data;
         this.valor = valor;
@@ -33,12 +34,13 @@ public class Venda implements Serializable {
     }
 
     public LocalDate getData() {
-        return  data;
+        return data;
     }
 
     public void setData(LocalDate data) {
         this.data = data;
     }
+
     public double getValor() {
         return valor;
     }
@@ -48,10 +50,12 @@ public class Venda implements Serializable {
     }
 
     public boolean getPago() {
-        return  pago;
+        return pago;
     }
 
-    public void setPago(boolean pago) {this.pago = pago;}
+    public void setPago(boolean pago) {
+        this.pago = pago;
+    }
 
     public List<Produto> getItensdeVenda() {
         return itensdeVenda;
@@ -64,6 +68,7 @@ public class Venda implements Serializable {
     public String getFormaDePagamento() {
         return formaDePagamento;
     }
+
     public void setFormaDePagamento(String formaDePagamento) {
         this.formaDePagamento = formaDePagamento;
     }

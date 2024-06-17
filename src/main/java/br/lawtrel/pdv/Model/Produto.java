@@ -1,7 +1,5 @@
 package br.lawtrel.pdv.Model;
 
-import javafx.beans.property.IntegerProperty;
-import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
@@ -12,7 +10,7 @@ public class Produto {
     private int quantidade;
     private int preco;
 
-    public Produto(String codigo,String descricao, int quantidade, int preco) {
+    public Produto(String codigo, String descricao, int quantidade, int preco) {
         this.codigo = new SimpleStringProperty(codigo);
         this.descricao = new SimpleStringProperty(descricao);
         this.quantidade = quantidade;
@@ -24,13 +22,15 @@ public class Produto {
         this.codigo = codigo;
         this.descricao = descricao;
     }
-    public  Produto() {
+
+    public Produto() {
         this.codigo = new SimpleStringProperty();
         this.descricao = new SimpleStringProperty();
         this.quantidade = 0;
         this.preco = 0;
 
     }
+
     public StringProperty codigoProperty() {
         return codigo;
     }
@@ -39,7 +39,7 @@ public class Produto {
         return codigo.get();
     }
 
-    public  void  setCodigo(String codigo) {
+    public void setCodigo(String codigo) {
         this.codigo.set(codigo);
 
     }

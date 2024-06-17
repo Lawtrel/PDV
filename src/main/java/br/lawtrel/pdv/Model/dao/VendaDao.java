@@ -1,8 +1,8 @@
 package br.lawtrel.pdv.Model.dao;
+
 import br.lawtrel.pdv.Model.Venda;
 
 import java.sql.*;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -19,10 +19,10 @@ public class VendaDao {
 
         String sql = "INSERT INTO VENDAS(data,valor,pago, forma_pagamento) VALUES(?,?,?,?)";
         try {
-            PreparedStatement pst = connection.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
+            PreparedStatement pst = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             pst.setDate(1, Date.valueOf(venda.getData()));
-            pst.setDouble(2,venda.getValor());
-            pst.setBoolean(3,venda.getPago());
+            pst.setDouble(2, venda.getValor());
+            pst.setBoolean(3, venda.getPago());
             pst.setString(4, venda.getFormaDePagamento());
             pst.executeUpdate();
 
@@ -30,7 +30,7 @@ public class VendaDao {
             if (generatedKeys.next()) {
                 venda.setCodVenda(generatedKeys.getInt(1));
             } else {
-                throw  new SQLException("Falha ao gerar o ID da venda");
+                throw new SQLException("Falha ao gerar o ID da venda");
             }
         } catch (SQLException ex) {
             Logger.getLogger(VendaDao.class.getName()).log(Level.SEVERE, null, ex);
@@ -41,14 +41,14 @@ public class VendaDao {
         String sql = "DELETE FROM VENDAS WHERE codigo=?";
         try {
             PreparedStatement pst = connection.prepareStatement(sql);
-            pst.setInt(1,venda.getCodVenda());
+            pst.setInt(1, venda.getCodVenda());
             pst.execute();
         } catch (SQLException ex) {
             Logger.getLogger(VendaDao.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
-    public List <Venda> listar() {
+    public List<Venda> listar() {
         List<Venda> vendas = new ArrayList<>();
         String sql = "SELECT * FROM VENDAS";
         try {
@@ -78,12 +78,12 @@ public class VendaDao {
         try {
             PreparedStatement pst = connection.prepareStatement(sql);
             ResultSet rst = pst.executeQuery();
-            if ( rst.next()) {
+            if (rst.next()) {
                 total = rst.getDouble("total");
             }
         } catch (SQLException ex) {
             Logger.getLogger(VendaDao.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return  total;
+        return total;
     }
 }

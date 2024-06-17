@@ -26,32 +26,33 @@
 
 }*/
 
-    module  br.lawtrel.pdv {
-        requires java.logging;
-        requires java.sql;
-        requires javafx.base;
-        requires javafx.controls;
-        requires javafx.fxml;
-        requires javafx.graphics;
-        requires junit;
-        requires dx.java;
-        requires com.google.zxing;
-        requires com.google.zxing.javase;
-        requires java.desktop;
+module br.lawtrel.pdv {
+    requires java.logging;
+    requires java.sql;
+    requires javafx.base;
+    requires javafx.controls;
+    requires javafx.fxml;
+    requires javafx.graphics;
+    requires junit;
+    requires dx.java;
+    requires com.google.zxing;
+    requires com.google.zxing.javase;
+    requires java.desktop;
+    requires atlantafx.base;
 
-        opens br.lawtrel.pdv.Model to javafx.base;
-        opens br.lawtrel.pdv to javafx.fxml;
-        exports br.lawtrel.pdv;
-        exports  br.lawtrel.pdv.Model;
+    opens br.lawtrel.pdv.Model to javafx.base;
+    opens br.lawtrel.pdv to javafx.fxml;
+    exports br.lawtrel.pdv;
+    exports br.lawtrel.pdv.Model;
 
-        opens br.lawtrel.pdv.Controller to javafx.fxml;
-        exports  br.lawtrel.pdv.Controller;
+    opens br.lawtrel.pdv.Controller to javafx.fxml;
+    exports br.lawtrel.pdv.Controller;
 
-        opens br.lawtrel.pdv.Controller.Menus to javafx.fxml;
-        exports br.lawtrel.pdv.Controller.Menus;
+    opens br.lawtrel.pdv.Controller.Menus to javafx.fxml;
+    exports br.lawtrel.pdv.Controller.Menus;
 
-        opens  br.lawtrel.pdv.View to javafx.graphics;
-        exports  br.lawtrel.pdv.View;
-    }
+    opens br.lawtrel.pdv.View to javafx.graphics;
+    exports br.lawtrel.pdv.View;
+}
 
 

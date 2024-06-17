@@ -1,18 +1,16 @@
 package br.lawtrel.pdv.Controller;
 
-import br.lawtrel.pdv.Model.*;
+import br.lawtrel.pdv.Model.MercadoPagoConfig;
+import br.lawtrel.pdv.Model.Produto;
+import br.lawtrel.pdv.Model.Venda;
+import br.lawtrel.pdv.Model.connectDB;
 import br.lawtrel.pdv.Model.dao.ProdutoDao;
 import br.lawtrel.pdv.Model.dao.VendaDao;
-
-import br.lawtrel.pdv.Model.MercadoPagoConfig;
 import com.mercadopago.exceptions.MPException;
 import com.mercadopago.resources.Payment;
 import com.mercadopago.resources.datastructures.payment.Payer;
-
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-
-
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -27,35 +25,25 @@ import java.util.Optional;
 
 public class vendasController {
     @FXML
-    private TextField productCodeField;
-
-    @FXML
-    private TextField quantityField;
-
-    @FXML
-    private TableView<Produto> productsTable;
-
-    @FXML
-    private TableColumn<Produto, String> codeColumn;
-
-    @FXML
-    private TableColumn<Produto, String> descriptionColumn;
-
-    @FXML
-    private TableColumn<Produto, Integer> quantityColumn;
-
-    @FXML
-    private TableColumn<Produto, Double> priceTotalColumn;
-
-    @FXML
-    private Label totalLabel;
-
-
-    @FXML
     private final ObservableList<Produto> produtosList;
-
     private final VendaDao vendaDao;
     private final ProdutoDao produtoDao;
+    @FXML
+    private TextField productCodeField;
+    @FXML
+    private TextField quantityField;
+    @FXML
+    private TableView<Produto> productsTable;
+    @FXML
+    private TableColumn<Produto, String> codeColumn;
+    @FXML
+    private TableColumn<Produto, String> descriptionColumn;
+    @FXML
+    private TableColumn<Produto, Integer> quantityColumn;
+    @FXML
+    private TableColumn<Produto, Double> priceTotalColumn;
+    @FXML
+    private Label totalLabel;
 
     public vendasController() throws SQLException {
         Connection connection = connectDB.getConnection();
@@ -133,6 +121,7 @@ public class vendasController {
         produtosList.clear();
         atualizarTotal();
     }
+
     public String selecionarFormaDePagamento() {
         List<String> choices = new ArrayList<>();
         choices.add("Dinheiro");
@@ -228,7 +217,6 @@ public class vendasController {
     }
 
 
-
     // Handler para cancelar venda
     @FXML
     private void btnCancelSale() {
@@ -238,7 +226,7 @@ public class vendasController {
 
     private void atualizarTotal() {
         double total = calcularTotal();
-        totalLabel.setText(String.format("Total: R$ %.2f",total));
+        totalLabel.setText(String.format("Total: R$ %.2f", total));
     }
 
     private double calcularTotal() {

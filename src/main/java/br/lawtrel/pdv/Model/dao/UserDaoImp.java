@@ -27,6 +27,7 @@ public class UserDaoImp implements UserDao {
             e.printStackTrace();
         }
     }
+
     @Override
     public User getUser(String username, String password) {
         String sql = "SELECT * FROM users WHERE username = ? AND password = ?";
@@ -48,10 +49,10 @@ public class UserDaoImp implements UserDao {
         List<User> users = new ArrayList<>();
         String sql = "SELECT * FROM USERS";
         try (Connection db = connectDB.getConnection();
-            Statement pst = db.createStatement();
-            ResultSet rst = pst.executeQuery(sql)) {
+             Statement pst = db.createStatement();
+             ResultSet rst = pst.executeQuery(sql)) {
             while (rst.next()) {
-                users.add(new User(rst.getInt("id"), rst.getString("username"),rst.getString("password")));
+                users.add(new User(rst.getInt("id"), rst.getString("username"), rst.getString("password")));
             }
         } catch (SQLException e) {
             e.printStackTrace();

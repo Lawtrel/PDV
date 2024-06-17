@@ -1,10 +1,11 @@
 package br.lawtrel.pdv.View;
+
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.stage.Stage;
 import javafx.scene.layout.VBox;
-import javafx.scene.control.Label;
+import javafx.stage.Stage;
 
 
 public class qrcodeView {
@@ -28,5 +29,6 @@ public class qrcodeView {
         Scene scene = new Scene(vbox);
         stage.setScene(scene);
         stage.show();
+
     }
 }

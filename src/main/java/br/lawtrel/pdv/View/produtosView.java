@@ -1,7 +1,6 @@
 package br.lawtrel.pdv.View;
 
-import br.lawtrel.pdv.Model.Produto;
-import br.lawtrel.pdv.Model.dao.ProdutoDao;
+import atlantafx.base.theme.Dracula;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -11,7 +10,6 @@ import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 import java.net.URL;
-import java.util.List;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
@@ -32,7 +30,7 @@ public class produtosView extends Application implements Initializable {
         stage.setTitle("Tela Produtos");
         stage.show();
 
-        Application.setUserAgentStylesheet(Objects.requireNonNull(getClass().getResource("/br/lawtrel/pdv/assets/themes/dracula.css")).toExternalForm());
+        Application.setUserAgentStylesheet(new Dracula().getUserAgentStylesheet());
     }
 
     @Override

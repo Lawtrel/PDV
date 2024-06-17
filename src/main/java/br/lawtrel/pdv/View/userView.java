@@ -1,5 +1,6 @@
 package br.lawtrel.pdv.View;
 
+import atlantafx.base.theme.Dracula;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -13,21 +14,21 @@ public class userView extends Application {
 
 
     public static void main(String[] args) {
-            launch(args);
+        launch(args);
     }
 
-        @Override
-        public void start(Stage stage) throws Exception {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/br/lawtrel/pdv/userScreen.fxml"));
-            Parent root = loader.load();
-            Scene scene = new Scene(root);
-            stage.getIcons().add(new Image(Objects.requireNonNull(getClass().getResource("/br/lawtrel/pdv/assets/logo.png")).toExternalForm()));
-            stage.setWidth(600);
-            stage.setHeight(450);
-            stage.setScene(scene);
-            stage.setTitle("Tela de Usuário");
-            stage.show();
+    @Override
+    public void start(Stage stage) throws Exception {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/br/lawtrel/pdv/userScreen.fxml"));
+        Parent root = loader.load();
+        Scene scene = new Scene(root);
+        stage.getIcons().add(new Image(Objects.requireNonNull(getClass().getResource("/br/lawtrel/pdv/assets/logo.png")).toExternalForm()));
+        stage.setWidth(600);
+        stage.setHeight(450);
+        stage.setScene(scene);
+        stage.setTitle("Tela de Usuário");
+        stage.show();
 
-            Application.setUserAgentStylesheet(Objects.requireNonNull(getClass().getResource("/br/lawtrel/pdv/assets/themes/dracula.css")).toExternalForm());
-        }
+        Application.setUserAgentStylesheet(new Dracula().getUserAgentStylesheet());
+    }
 }

@@ -1,27 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.VBox?>
+<VBox xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/17.0.2-ea"
+      fx:controller="br.lawtrel.pdv.Controller.Menus.userController">
+    <MenuBar layoutY="1.0" prefHeight="25.0" prefWidth="600.0">
+        <Menu mnemonicParsing="false" text="Menu">
+            <MenuItem fx:id="menufuncionarios" mnemonicParsing="false" onAction="#swapfuncionarios"
+                      text="Funcionários"/>
+            <MenuItem fx:id="menuprodutos" mnemonicParsing="false" onAction="#swapprodutos" text="Produtos"/>
+            <MenuItem fx:id="menuvendas" mnemonicParsing="false" onAction="#swapvendas" text="Vendas"/>
+        </Menu>
 
-<VBox xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.lawtrel.pdv.Controller.Menus.userController">
-  <MenuBar layoutY="1.0" prefHeight="25.0" prefWidth="600.0">
-    <Menu mnemonicParsing="false" text="Menu">
-      <MenuItem fx:id="menufuncionarios" mnemonicParsing="false" onAction="#swapfuncionarios" text="Funcionários" />
-      <MenuItem fx:id="menuprodutos" mnemonicParsing="false" onAction="#swapprodutos" text="Produtos" />
-      <MenuItem fx:id="menuvendas" mnemonicParsing="false" onAction="#swapvendas" text="Vendas" />
-    </Menu>
-
-    <Menu mnemonicParsing="false" text=". . . . . .">
-      <MenuItem mnemonicParsing="false" text="." />
-    </Menu>
-    <Menu mnemonicParsing="false" text="Quadro de Funcionários">
-      <MenuItem mnemonicParsing="false" text="." />
-    </Menu>
-  </MenuBar>
-  <TableView fx:id="userTable">
-    <columns>
-      <TableColumn fx:id="codigocolumn" text="Código" />
-      <TableColumn fx:id="nomecolumn" text="Nome" />
-    </columns>
-  </TableView>
+        <Menu mnemonicParsing="false" text=". . . . . .">
+            <MenuItem mnemonicParsing="false" text="."/>
+        </Menu>
+        <Menu mnemonicParsing="false" text="Quadro de Funcionários">
+            <MenuItem mnemonicParsing="false" text="."/>
+        </Menu>
+    </MenuBar>
+    <TableView fx:id="userTable">
+        <columns>
+            <TableColumn fx:id="codigocolumn" text="Código"/>
+            <TableColumn fx:id="nomecolumn" text="Nome"/>
+        </columns>
+    </TableView>
 </VBox>
