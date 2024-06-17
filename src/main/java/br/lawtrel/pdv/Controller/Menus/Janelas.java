@@ -8,11 +8,11 @@ import javafx.fxml.Initializable;
 
 public class Janelas {
     @FXML
-    protected void swapfuncionarios(ActionEvent e) {
+    protected void swapprodutos(ActionEvent e){
         Menu.trocaTela(1);
     }
     @FXML
-    protected void swapprodutos(ActionEvent e){
+    protected void swapfuncionarios(ActionEvent e) {
         Menu.trocaTela(2);
     }
     @FXML

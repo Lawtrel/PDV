@@ -49,6 +49,5 @@ public class userController extends Janelas {
         nomecolumn.setCellValueFactory(new PropertyValueFactory<>("nome"));
         tipocolumn.setCellValueFactory(new PropertyValueFactory<>("tipo"));
         userTable.setItems(userList);
-
     }
 }

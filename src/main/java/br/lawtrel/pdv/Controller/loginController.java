@@ -34,8 +34,6 @@ public class loginController {
         User user = new User(username,password);
         userDao.getUser(username,password);
 
-
-
             System.out.println("Login feito com sucesso!");
 
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/br/lawtrel/pdv/vendasScreen.fxml"));

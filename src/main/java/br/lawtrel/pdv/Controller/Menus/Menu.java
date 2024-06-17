@@ -10,6 +10,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.net.URL;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 
@@ -23,12 +24,11 @@ public class Menu extends Application implements Initializable {
     @Override
     public void start(Stage stage) throws Exception {
 
+        primaryStage = stage;
 
-        FXMLLoader produtosCont = new FXMLLoader(getClass().getResource("produtosScreen.fxml"));
-        FXMLLoader vendasCont = new FXMLLoader(getClass().getResource("vendasFeitas.fxml"));
-        FXMLLoader funcionariosCont = new FXMLLoader(getClass().getResource("userScreen.fxml"));
-
-
+        FXMLLoader produtosCont = new FXMLLoader(getClass().getResource("/br/lawtrel/pdv/produtosScreen.fxml"));
+        FXMLLoader vendasCont = new FXMLLoader(getClass().getResource("/br/lawtrel/pdv/vendasFeitas.fxml"));
+        FXMLLoader funcionariosCont = new FXMLLoader(getClass().getResource("/br/lawtrel/pdv/userScreen.fxml"));
 
         primaryStage.setTitle("Troca de telas");
 
@@ -39,6 +39,14 @@ public class Menu extends Application implements Initializable {
         sceneprodutos = new Scene(parentProdutosS, 600, 450);
         scenefuncionarios = new Scene(parentUserS, 600, 450);
         scenevendas = new Scene(parentVendasFeitas, 600, 450);
+
+        if (primaryStage != null) {
+            primaryStage.setScene(sceneprodutos);
+        } else {
+            System.err.println("Error: primaryStage is null");
+            // Handle the error accordingly, perhaps throw an exception or log it
+        }
+        Application.setUserAgentStylesheet(Objects.requireNonNull(getClass().getResource("/br/lawtrel/pdv/assets/themes/dracula.css")).toExternalForm());
 
         stage.setScene(sceneprodutos);
         stage.show();
