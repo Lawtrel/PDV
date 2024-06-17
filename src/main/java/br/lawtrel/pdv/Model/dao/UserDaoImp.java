@@ -9,6 +9,12 @@ import java.util.List;
 
 public class UserDaoImp implements UserDao {
 
+    private final Connection connection;
+
+    public UserDaoImp(Connection connection) {
+        this.connection = connection;
+    }
+
     @Override
     public void addUser(User user) {
         String sql = "INSERT INTO USERS (username,password) VALUES(?,?)";

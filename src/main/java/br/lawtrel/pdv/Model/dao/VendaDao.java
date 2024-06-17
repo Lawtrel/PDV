@@ -56,7 +56,7 @@ public class VendaDao {
             ResultSet rst = pst.executeQuery();
             while (rst.next()) {
                 Venda venda = new Venda();
-                venda.setCodVenda(rst.getInt("codigo"));
+                venda.setCodVenda(rst.getInt("id"));
                 venda.setData(rst.getDate("data").toLocalDate());
                 venda.setValor(rst.getDouble("valor"));
                 venda.setPago(rst.getBoolean("pago"));
@@ -72,5 +72,18 @@ public class VendaDao {
         return vendas;
     }
 
-
+    public double calcularTotalVendas() {
+        String sql = "SELECT SUM(valor) AS total FROM VENDAS";
+        double total = 0;
+        try {
+            PreparedStatement pst = connection.prepareStatement(sql);
+            ResultSet rst = pst.executeQuery();
+            if ( rst.next()) {
+                total = rst.getDouble("total");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(VendaDao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return  total;
+    }
 }

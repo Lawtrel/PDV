@@ -1,43 +1,66 @@
 package br.lawtrel.pdv.Controller.Menus;
 
 import javafx.application.Application;
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
+
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+
 import javafx.stage.Stage;
 
-public class Menu extends Application {
+import java.net.URL;
+import java.util.ResourceBundle;
 
-    private static Scene sceneprodutos,scenevendas,scenefuncionarios;
-    private static Stage primaryStage;
+
+public class Menu extends Application implements Initializable {
+
+    public static Scene sceneprodutos;
+    public static Scene scenevendas;
+    public static Scene scenefuncionarios;
+    public static Stage primaryStage;
+
     @Override
     public void start(Stage stage) throws Exception {
-        FXMLLoader produtosCont = new FXMLLoader(getClass().getResource("produtosScreen.fxml"));
-        FXMLLoader vendasCont = new FXMLLoader(getClass().getResource("vendasFeitas.fxml"));
-        FXMLLoader funcionariosCont = new FXMLLoader(getClass().getResource("userScreen.fxml"));
-
         primaryStage = stage;
-        primaryStage.setTitle("Muda janela");
 
-        Parent parentprodutos = produtosCont.load();
-        Parent parentvendas = vendasCont.load();
-        Parent parentfuncionarios = funcionariosCont.load();
+        FXMLLoader produtosCont = new FXMLLoader(getClass().getResource("/br/lawtrel/pdv/produtosScreen.fxml"));
+        FXMLLoader vendasCont = new FXMLLoader(getClass().getResource("/br/lawtrel/pdv/vendasFeitas.fxml"));
+        FXMLLoader funcionariosCont = new FXMLLoader(getClass().getResource("/br/lawtrel/pdv/userScreen.fxml"));
 
 
+
+        primaryStage.setTitle("Troca de telas");
+
+        Parent parentProdutosS = produtosCont.load();
+        Parent parentUserS = funcionariosCont.load();
+        Parent parentVendasFeitas = vendasCont.load();
+
+        sceneprodutos = new Scene(parentProdutosS, 600, 450);
+        scenefuncionarios = new Scene(parentUserS, 600, 450);
+        scenevendas = new Scene(parentVendasFeitas, 600, 450);
+
+        stage.setScene(sceneprodutos);
         stage.show();
     }
-    @FXML
-    protected void swapprodutos(ActionEvent e){
 
-    }
-    @FXML
-    protected void swapfuncionarios(ActionEvent e){
+    public static void trocaTela(int op){
+        switch (op){
+            case 1:
+                primaryStage.setScene(sceneprodutos);
+                break;
 
+            case 2:
+                primaryStage.setScene(scenefuncionarios);
+                break;
+
+            case 3:
+                primaryStage.setScene(scenevendas);
+                break;
+        }
     }
-    @FXML
-    protected void swapvendas(ActionEvent e){
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
 
     }
 }

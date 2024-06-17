@@ -3,32 +3,25 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.lawtrel.pdv.Controller.Menus.userController">
-  <MenuBar layoutY="2.0" prefHeight="25.0" prefWidth="600.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-    <Menu fx:id="menufuncionarios" mnemonicParsing="false" text="Funcionario">
-      <MenuItem mnemonicParsing="false" text="Close" />
+<VBox xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.lawtrel.pdv.Controller.Menus.userController">
+  <MenuBar layoutY="1.0" prefHeight="25.0" prefWidth="600.0">
+    <Menu mnemonicParsing="false" text="Menu">
+      <MenuItem fx:id="menufuncionarios" mnemonicParsing="false" onAction="#swapfuncionarios" text="Funcionários" />
+      <MenuItem fx:id="menuprodutos" mnemonicParsing="false" onAction="#swapprodutos" text="Produtos" />
+      <MenuItem fx:id="menuvendas" mnemonicParsing="false" onAction="#swapvendas" text="Vendas" />
     </Menu>
-    <Menu fx:id="menuprodutos" mnemonicParsing="false" onAction="#swapprodutos" text="Produtos">
-      <MenuItem mnemonicParsing="false" text="Delete" />
-    </Menu>
-    <Menu fx:id="menuvendas" mnemonicParsing="false" text="Vendas">
-      <MenuItem mnemonicParsing="false" text="About" />
-    </Menu>
+
     <Menu mnemonicParsing="false" text=". . . . . .">
-      <MenuItem mnemonicParsing="false" text="Action 1" />
+      <MenuItem mnemonicParsing="false" text="." />
     </Menu>
-      <Menu mnemonicParsing="false" text="Quadro de Funcionários">
-        <items>
-          <MenuItem mnemonicParsing="false" text="Action 1" />
-        </items>
-      </Menu>
+    <Menu mnemonicParsing="false" text="Quadro de Funcionários">
+      <MenuItem mnemonicParsing="false" text="." />
+    </Menu>
   </MenuBar>
-  <TableView layoutY="27.0" prefHeight="345.0" prefWidth="600.0">
+  <TableView fx:id="userTable">
     <columns>
-      <TableColumn fx:id="idcolumn" prefWidth="57.0" text="ID" />
-      <TableColumn prefWidth="112.0" text="Tipo" />
-      <TableColumn prefWidth="260.0" text="Nome" />
-      <TableColumn minWidth="0.0" prefWidth="170.0" text="Total de Vendas" />
+      <TableColumn fx:id="codigocolumn" text="Código" />
+      <TableColumn fx:id="nomecolumn" text="Nome" />
     </columns>
   </TableView>
-</AnchorPane>
+</VBox>
