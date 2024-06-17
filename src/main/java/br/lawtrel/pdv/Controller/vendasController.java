@@ -1,20 +1,18 @@
 package br.lawtrel.pdv.Controller;
 
-import br.lawtrel.pdv.Model.Produto;
-import br.lawtrel.pdv.Model.Venda;
+import br.lawtrel.pdv.Model.*;
 import br.lawtrel.pdv.Model.dao.ProdutoDao;
 import br.lawtrel.pdv.Model.dao.VendaDao;
-import br.lawtrel.pdv.Model.connectDB;
 
 import br.lawtrel.pdv.Model.MercadoPagoConfig;
 import com.mercadopago.exceptions.MPException;
 import com.mercadopago.resources.Payment;
 import com.mercadopago.resources.datastructures.payment.Payer;
-import com.mercadopago.resources.datastructures.payment.TransactionDetails;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
+
+
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -25,6 +23,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+
 
 public class vendasController {
     @FXML
@@ -51,14 +50,15 @@ public class vendasController {
     @FXML
     private Label totalLabel;
 
+
+    @FXML
     private final ObservableList<Produto> produtosList;
 
-    private final Connection connection;
     private final VendaDao vendaDao;
     private final ProdutoDao produtoDao;
 
     public vendasController() throws SQLException {
-        connection = connectDB.getConnection();
+        Connection connection = connectDB.getConnection();
         vendaDao = new VendaDao(connection);
         produtoDao = new ProdutoDao(connection);
         produtosList = FXCollections.observableArrayList();
@@ -78,7 +78,7 @@ public class vendasController {
             produto.setQuantidade(quantidade);
             produto.setPreco(produto.getPreco() * quantidade);
             produtosList.add(produto);
-            produtoDao.insert(produto);
+            //produtoDao.insert(produto);
             atualizarTotal();
 
         } else {
@@ -89,16 +89,9 @@ public class vendasController {
             alert.showAndWait();
         }
 
-       /* Produto produto = new Produto(); //   ANTIGO METODO
-        produto.setCodigo(codigo);
-        produto.setDescricao("coco");
-        produto.setQuantidade(quantidade);
-        produto.setPreco(2 * quantidade);
-        */
-
     }
 
-    public void btnAddProductTEST(ActionEvent actionEvent) {
+    public void btnAddProductTEST() {
         String codigo = productCodeField.getText();
         int quantidade = Integer.parseInt(quantityField.getText());
         Produto produto = new Produto();
@@ -117,28 +110,30 @@ public class vendasController {
         Venda venda = new Venda();
         venda.setData(LocalDate.now());
         venda.setValor(calcularTotal());
-        venda.setPago(true);
-        String formaDePagamento = selecionarFormaDePagamento(venda);
+        String formaDePagamento = selecionarFormaDePagamento();
         venda.setFormaDePagamento(formaDePagamento);
 
-        if ("Dinheiro".equals(formaDePagamento)) {
-            double valorPago = solicitarValorPago();
-            emitirNota(venda,valorPago);
-        } else  if ("Cartão de Crédito".equals(formaDePagamento) || "Cartão de Débito".equals(formaDePagamento)) {
-            String detalhesCartao = solicitarDetalhesCartao();
+        switch (formaDePagamento) {
+            case "Dinheiro" -> {
+                double valorPago = solicitarValorPago();
+                emitirNota(venda, valorPago);
+                venda.setPago(true);
+            }
+            case "Cartão de Crédito", "Cartão de Débito" -> {
+                String detalhesCartao = solicitarDetalhesCartao();
                 processarPagamentoCartao(venda, detalhesCartao);
-        } else if ("PIX".equals(formaDePagamento)) {
-            String pixCode = gerarPixCode(venda.getValor());
-            gerarQRCode(pixCode);
-            emitirNota(venda,venda.getValor());
-        } else {
-            emitirNota(venda,venda.getValor());
+            }
+            case "PIX" -> {
+                emitirNota(venda, venda.getValor());
+                venda.setPago(false);
+            }
+            case null, default -> emitirNota(venda, venda.getValor());
         }
         vendaDao.insert(venda);
         produtosList.clear();
         atualizarTotal();
     }
-    public String selecionarFormaDePagamento(Venda venda) {
+    public String selecionarFormaDePagamento() {
         List<String> choices = new ArrayList<>();
         choices.add("Dinheiro");
         choices.add("Cartão de Crédito");
@@ -200,6 +195,7 @@ public class vendasController {
                 alert.setHeaderText("O pagamento com o cartão não foi aprovado.");
                 alert.setContentText("Por favor, tente novamente.");
                 alert.showAndWait();
+                venda.setPago(false);
             }
         } catch (MPException e) {
             e.printStackTrace();
@@ -208,6 +204,7 @@ public class vendasController {
             alert.setHeaderText("Ocorreu um erro ao processar o pagamento com o cartão.");
             alert.setContentText(e.getMessage());
             alert.showAndWait();
+            venda.setPago(false);
         }
     }
 
@@ -230,13 +227,6 @@ public class vendasController {
         alert.showAndWait();
     }
 
-    private String gerarPixCode(double valor) {
-        return "00020126360014BR.GOV.BCB.PIX0114+5561123456780205PIX5204000053039865802BR5925NOME DO RECEBEDOR6009SAO PAULO61080540900062150506" + valor;
-    }
-
-
-    private void gerarQRCode(String pixCode) {
-    }
 
 
     // Handler para cancelar venda
@@ -263,7 +253,6 @@ public class vendasController {
         quantityColumn.setCellValueFactory(new PropertyValueFactory<>("quantidade"));
         priceTotalColumn.setCellValueFactory(new PropertyValueFactory<>("preco"));
         productsTable.setItems(produtosList);
-
     }
 
 }

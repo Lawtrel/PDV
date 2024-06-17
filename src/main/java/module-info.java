@@ -35,6 +35,9 @@
         requires javafx.graphics;
         requires junit;
         requires dx.java;
+        requires com.google.zxing;
+        requires com.google.zxing.javase;
+        requires java.desktop;
 
         opens br.lawtrel.pdv.Model to javafx.base;
         opens br.lawtrel.pdv to javafx.fxml;
