@@ -5,26 +5,18 @@
 
 <VBox prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.lawtrel.pdv.Controller.Menus.produtosController">
 
-    <MenuBar fx:id="funcionarios" layoutY="5.0" prefHeight="25.0" prefWidth="600.0">
-        <Menu fx:id="menufuncionarios" mnemonicParsing="false" onAction="#swapfuncionarios" text="Funcionarios">
-            <MenuItem mnemonicParsing="false" text="Close" />
+    <MenuBar>
+        <Menu text="Menu">
+            <MenuItem fx:id="menufuncionarios" mnemonicParsing="false" onAction="#swapfuncionarios" text="Funcionários" />
+            <MenuItem fx:id="menuprodutos" mnemonicParsing="false" onAction="#swapprodutos" text="Produtos" />
+            <MenuItem fx:id="menuvendas" mnemonicParsing="false" onAction="#swapvendas" text="Vendas" />
         </Menu>
-        <Menu fx:id="menuprodutos" mnemonicParsing="false" onAction="#swapprodutos" text="Produtos">
-            <MenuItem mnemonicParsing="false" text="Delete" />
+        <Menu mnemonicParsing="false" text=". . . . . .">
+            <MenuItem mnemonicParsing="false" text="Action 1"/>
         </Menu>
-        <Menu fx:id="menuvendas" mnemonicParsing="false" onAction="#swapvendas" text="Vendas">
-            <MenuItem mnemonicParsing="false" text="About" />
+        <Menu mnemonicParsing="false" text="Estoque de Produtos">
+            <MenuItem mnemonicParsing="false" text="Action 1"/>
         </Menu>
-      <Menu mnemonicParsing="false" text=". . . . . .">
-        <items>
-          <MenuItem mnemonicParsing="false" text="Action 1" />
-        </items>
-      </Menu>
-      <Menu mnemonicParsing="false" text="Estoque de Produtos">
-        <items>
-          <MenuItem mnemonicParsing="false" text="Action 1" />
-        </items>
-      </Menu>
     </MenuBar>
     <TextField fx:id="searchBar" promptText="Digite o codigo do produto ou nome"/>
    <TableView fx:id="productsTable">

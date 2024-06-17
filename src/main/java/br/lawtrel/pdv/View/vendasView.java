@@ -1,5 +1,6 @@
 package br.lawtrel.pdv.View;
 
+import atlantafx.base.theme.Dracula;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -31,7 +32,7 @@ public class vendasView extends Application {
         stage.setScene(scene);
         stage.setTitle("Tela de Vendas");
         stage.show();
-        Application.setUserAgentStylesheet(Objects.requireNonNull(getClass().getResource("/br/lawtrel/pdv/assets/themes/dracula.css")).toExternalForm());
+        Application.setUserAgentStylesheet(new Dracula().getUserAgentStylesheet());
     }
 
     private void mostrarProdutos() {

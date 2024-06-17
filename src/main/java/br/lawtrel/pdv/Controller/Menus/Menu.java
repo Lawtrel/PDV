@@ -18,6 +18,7 @@ public class Menu extends Application implements Initializable {
     public static Scene sceneprodutos;
     public static Scene scenevendas;
     public static Scene scenefuncionarios;
+
     public static Stage primaryStage;
 
     @Override
@@ -36,11 +37,13 @@ public class Menu extends Application implements Initializable {
         Parent parentUserS = funcionariosCont.load();
         Parent parentVendasFeitas = vendasCont.load();
 
+
         sceneprodutos = new Scene(parentProdutosS, 600, 450);
         scenefuncionarios = new Scene(parentUserS, 600, 450);
         scenevendas = new Scene(parentVendasFeitas, 600, 450);
 
-        stage.setScene(sceneprodutos);
+
+        stage.setScene(scenefuncionarios);
         stage.show();
     }
 

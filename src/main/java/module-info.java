@@ -38,6 +38,7 @@
         requires com.google.zxing;
         requires com.google.zxing.javase;
         requires java.desktop;
+        requires atlantafx.base;
 
         opens br.lawtrel.pdv.Model to javafx.base;
         opens br.lawtrel.pdv to javafx.fxml;

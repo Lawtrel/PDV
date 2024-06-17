@@ -9,7 +9,7 @@
         <Button layoutX="14.0" layoutY="128.0" onAction="#btnLogin" text="Login" />
         <Button layoutX="152.0" layoutY="128.0" onAction="#btnRegister" text="Registrar" />
         <TextField fx:id="usernameField" layoutX="8.0" layoutY="31.0" prefHeight="26.0" prefWidth="217.0" promptText="Usuario" />
-      <Button layoutX="65.0" layoutY="128.0" mnemonicParsing="false" onAction="#btnLoginADM" text="ADM" />
+      <Button fx:id="admButton" layoutX="65.0" layoutY="128.0" mnemonicParsing="false" onAction="#btnLoginADM" text="ADM" />
     </AnchorPane>
 
 </VBox>

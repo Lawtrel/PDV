@@ -1,5 +1,6 @@
 package br.lawtrel.pdv.View;
 
+import atlantafx.base.theme.Dracula;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -28,6 +29,6 @@ public class userView extends Application {
             stage.setTitle("Tela de Usuário");
             stage.show();
 
-            Application.setUserAgentStylesheet(Objects.requireNonNull(getClass().getResource("/br/lawtrel/pdv/assets/themes/dracula.css")).toExternalForm());
-        }
+            Application.setUserAgentStylesheet(new Dracula().getUserAgentStylesheet());
+    }
 }

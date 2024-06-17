@@ -1,5 +1,6 @@
 package br.lawtrel.pdv.Controller;
 
+import br.lawtrel.pdv.Controller.Menus.Menu;
 import br.lawtrel.pdv.Model.User;
 import br.lawtrel.pdv.Model.connectDB;
 import br.lawtrel.pdv.Model.dao.UserDao;
@@ -11,6 +12,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -20,6 +22,8 @@ import java.sql.Connection;
 import java.sql.SQLException;
 
 public class loginController {
+    @FXML
+    public Button admButton;
     private Stage stage;
     private Scene scene;
     private Parent root;
@@ -62,20 +66,14 @@ public class loginController {
     }
 
     @FXML
-    private void btnLoginADM(ActionEvent event) throws IOException {
+    private void btnLoginADM(ActionEvent event) throws Exception {
         String username = usernameField.getText();
         String password = passwordField.getText();
 
         if ("admin".equals(username) && "admin".equals(password)) {
             System.out.println("Login feito com sucesso!");
-
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/br/lawtrel/pdv/produtosScreen.fxml"));
-            root = loader.load();
-            stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-            scene = new Scene(root);
-            stage.setScene(scene);
-            stage.setTitle("Tela de Produtos");
-            stage.show();
+            Stage stage = (Stage) admButton.getScene().getWindow();
+            new Menu().start(stage);
 
         } else {
             System.out.println("Senha Invalida!");

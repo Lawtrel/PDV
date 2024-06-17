@@ -9,11 +9,11 @@ import javafx.fxml.Initializable;
 public class Janelas {
     @FXML
     protected void swapfuncionarios(ActionEvent e) {
-        Menu.trocaTela(1);
+        Menu.trocaTela(2);
     }
     @FXML
     protected void swapprodutos(ActionEvent e){
-        Menu.trocaTela(2);
+        Menu.trocaTela(1);
     }
     @FXML
     protected void swapvendas(ActionEvent e){
